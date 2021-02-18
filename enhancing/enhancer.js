@@ -1,6 +1,4 @@
-module.exports = {
-   enhancement
-  };
+
   const enhancement = {
 
 
@@ -76,4 +74,6 @@ module.exports = {
   
 
   };
-  
+  module.exports = {
+    enhancement
+   };
