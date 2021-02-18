@@ -2,12 +2,12 @@ const enhancement = require('./enhancer.js');
 // test away!
 
 
-function drinkAll(callback, flavour) {
-    if(!flavour.durability ){
-        const durability = flavour.durability
+function drinkAll(callback, enhancer) {
+    if(!enhancer.durability ){
+        const durability = enhancer.durability
     
     if (durability >= 0) {
-      callback(flavour);
+      callback(enhancer);
     }
     }else{
         console.log('kickrocks')
@@ -16,7 +16,7 @@ function drinkAll(callback, flavour) {
   
   describe('drinkAll', () => {
     test('enhancements callback is called', () => {
-        const gI =  enhancement.getItm
+
     //   const drink = enhancement.success;
     //     // jest.fn
     //   drinkAll(drink, gI);
@@ -24,25 +24,43 @@ function drinkAll(callback, flavour) {
 
  
 
+        const gI =  enhancement.getItm
+        const successSpy = jest.spyOn(enhancement, 'success');
+        const successInit = enhancement.success(gI);
 
-        const spy = jest.spyOn(enhancement, 'success');
-        const isPlaying = enhancement.success(gI);
 
+        drinkAll(successInit, gI);
 
-        drinkAll(isPlaying, gI);
-
-        expect(spy).toHaveBeenCalled();
+        expect(successSpy).toHaveBeenCalled();
         // expect(isPlaying).toBe(true);
         // expect(isPlaying).toHaveBeenCalled();
-        spy.mockRestore();
+        successSpy.mockRestore();
 
     });
   
     test('enhancements callback is called NOT CALLED', () => {
-        const gI = enhancement.getItm
-        const drink = enhancement.success;
-      drinkAll(drink, gI);
-      expect(drink).not.toHaveBeenCalled();
+        // const gI = enhancement.getItm
+    //     const drink = enhancement.success;
+    //   drinkAll(drink, gI);
+    //   expect(drink).not.toHaveBeenCalled();
+
+        
+      const gI =  enhancement.getItm
+      const successSpy = jest.spyOn(enhancement, 'success');
+      const successInit = enhancement.success(gI);
+
+
+
+
+      if(successSpy){
+        drinkAll(successInit, gI);
+      }else{
+        expect(successSpy).not.toHaveBeenCalled();
+        expect(successSpy).toBe(false);
+        // expect(isPlaying).toHaveBeenCalled();
+        successSpy.mockRestore();
+      }
+
     });
   });
 
