@@ -70,10 +70,10 @@
   
     get(item) {
     return { ...item };
-  }
+  },
   
 
   };
-  module.exports = {
+  module.exports = 
     enhancement
-   };
+   ;
