@@ -17,31 +17,32 @@ function drinkAll(callback, flavour) {
   describe('drinkAll', () => {
     test('enhancements callback is called', () => {
         const gI =  enhancement.getItm
-      const drink = enhancement.success;
-        // jest.fn
-      drinkAll(drink, gI);
-      expect(drink).toHaveBeenCalled();
+    //   const drink = enhancement.success;
+    //     // jest.fn
+    //   drinkAll(drink, gI);
+    //   expect(drink).toHaveBeenCalled();
+
+ 
+
+
+        const spy = jest.spyOn(enhancement, 'success');
+        const isPlaying = enhancement.success(gI);
+
+
+        drinkAll(isPlaying, gI);
+
+        expect(spy).toHaveBeenCalled();
+        // expect(isPlaying).toBe(true);
+        // expect(isPlaying).toHaveBeenCalled();
+        spy.mockRestore();
+
     });
   
     test('enhancements callback is called NOT CALLED', () => {
-
-        const spy = jest.spyOn(enhancement, 'success', 'getItm'); // we pass 'get'
-       
         const gI = enhancement.getItm
         const drink = enhancement.success;
       drinkAll(drink, gI);
       expect(drink).not.toHaveBeenCalled();
-
-
-         const isPlaying = spy.success;
-      
-        expect(spy).not.toHaveBeenCalled();
-        expect(isPlaying).toBe(true);
-      
-        spy.mockRestore();
-
-
-
     });
   });
 
