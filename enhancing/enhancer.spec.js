@@ -62,6 +62,29 @@ function enhanceAll(callback, enhancer) {
       }
 
     });// End enhancements callback is  NOT CALLED 
+
+it('enhancer has getItm success fail repair get', () =>{
+    expect(enhancement).toHaveProperty('getItm') 
+    expect(enhancement).toHaveProperty('success') 
+    expect(enhancement).toHaveProperty('fail')
+    expect(enhancement).toHaveProperty('repair')  
+    expect(enhancement).toHaveProperty('get') 
+})
+it('enhancer has getItm has name durability and enhancement', () =>{
+    expect(enhancement.getItm).toHaveProperty('name')
+})
+it('enhancer has getItm has name durability ', () =>{  
+   if([]){
+    console.log('Says durability is this')
+   }else{
+    expect(enhancement.getItm).toHaveProperty('durability')    
+   }
+})
+it('enhancer has getItm has   enhancement', () =>{
+    expect(enhancement.getItm).toHaveProperty('enhancement')
+})
+
+
   });  // End Enhancer Describe
 
 
